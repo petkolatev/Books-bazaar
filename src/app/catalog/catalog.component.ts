@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
+import { Book } from '../types/book';
 
 @Component({
   selector: 'app-catalog',
@@ -7,6 +9,16 @@ import { Component } from '@angular/core';
   templateUrl: './catalog.component.html',
   styleUrl: './catalog.component.css'
 })
-export class CatalogComponent {
-  constructor() { }
+export class CatalogComponent implements OnInit {
+  books: Book[] = []
+
+  constructor(private apiService: ApiService) { }
+
+  ngOnInit(): void {
+    this.apiService.getBooks().subscribe((books) => {
+      this.books = books
+      console.log(books);
+
+    })
+  }
 }

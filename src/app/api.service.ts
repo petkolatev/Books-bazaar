@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Task } from './types/task';
 import { environment } from '../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
+import { Book } from './types/book';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getTasks() {
+  getBooks() {
     const { apiUrl } = environment
-    return this.http.get<Task[]>(`${apiUrl}/tasks`)
+    return this.http.get<Book[]>(`${apiUrl}/books`)
   }
 }

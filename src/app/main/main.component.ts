@@ -6,7 +6,7 @@ import { CatalogComponent } from '../catalog/catalog.component';
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [MostPopularComponent,CatalogComponent,],
+  imports: [MostPopularComponent,CatalogComponent],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })
