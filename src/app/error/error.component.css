@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.error-container {
+    text-align: center;
+}
+
+.error-code {
+    font-size: 6em;
+    margin: 0;
+}
+
+.error-message {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.error-description {
+    margin: 20px 0;
+    color: #666;
+}
+
+.error-action a {
+    color: #333;
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.error-action a:hover {
+    background-color: #333;
+    color: #fff;
+}

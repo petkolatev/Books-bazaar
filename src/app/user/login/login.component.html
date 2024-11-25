@@ -1,0 +1,9 @@
+<div class="login-form">
+    <h2>Логин</h2>
+    <form> <label for="username">Потребителско име</label>
+        <input type="text" id="username" name="username" #inputEmail required>
+        <label for="password">Парола</label>
+        <input type="password" id="password" name="password" #inputPassword required>
+        <button (click)="login($event,inputEmail.value,inputPassword.value)">Вход</button>
+    </form>
+</div>

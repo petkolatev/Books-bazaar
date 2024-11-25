@@ -1,0 +1,11 @@
+<nav> <a routerLink="/home">Home</a>
+    <a routerLink="/catalog">Catalog</a>
+    @if(isLoggedIn){
+    <a (click)="logout()">Logout</a>
+    <a routerLink="/profile">Profile</a>
+
+    }@else {
+    <a routerLink="/login">Login</a>
+    <a routerLink="/register">Register</a>
+    }
+</nav>
