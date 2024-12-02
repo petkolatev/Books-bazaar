@@ -1,9 +1,13 @@
-<h1>Каталог на Продукти</h1>
-@for (book of books; track $index) {
-<div class="catalog section">
-    <div class="block">
-        <h2>{{book.title}}</h2>
-        <p>{{book.description}}</p>
+<div class="container">
+    <h1>Каталог на Продукти</h1>
+    <div class="catalog section">
+        @for (book of books; track $index) {
+        <div class="product">
+            <a [routerLink]="book._id" class="normal">
+            <h2>{{book.title}}</h2>
+            </a>
+            <p>{{book.description}}</p>
+        </div>
+        }
     </div>
 </div>
-}

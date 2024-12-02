@@ -1,0 +1,20 @@
+<div class="book-container"> <img src={{books.image}} alt="Тайната градина">
+    <h2>{{books.title}}</h2>
+    <p><strong>Автор:</strong>{{books.author}}</p>
+    <p><strong>Жанр:</strong> {{books.genre}}</p>
+    <p><strong>Година:</strong>{{books.year}}</p>
+    <p>{{books.description}}.</p>
+    @if(isLoggedIn){
+    @if(isOwner){
+    <button class="button">Edin</button>
+    <button class="button">Delete</button>
+
+    }@else {
+
+
+    <button class="button">Like</button>
+    <button class="button">Buy</button>
+    <button class="button">Rent</button>
+    }
+    }
+</div>
