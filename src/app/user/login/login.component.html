@@ -1,9 +1,9 @@
 <div class="login-form">
     <h2>Логин</h2>
-    <form> <label for="username">Потребителско име</label>
-        <input type="text" id="username" name="username" #inputEmail required>
+    <form #form="ngForm" (ngSubmit)="login(form)"> <label for="email">Имейл</label>
+        <input type="email" id="email" name="email" ngModel #inputEmail="ngModel">
         <label for="password">Парола</label>
-        <input type="password" id="password" name="password" #inputPassword required>
-        <button (click)="login($event,inputEmail.value,inputPassword.value)">Вход</button>
+        <input type="password" id="password" name="password" ngModel #inputPassword="ngModel">
+        <button>Вход</button>
     </form>
 </div>

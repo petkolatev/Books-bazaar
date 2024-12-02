@@ -13,10 +13,12 @@ export class HeaderComponent {
   get isLoggedIn(): boolean {
     return this.userService.isLogged
   }
-  constructor(private userService: UserService,private router:Router) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   logout() {
-    this.userService.logout()
-    this.router.navigate(['/home'])
+    this.userService.logout().subscribe(() => {
+      this.router.navigate(['/login'])
+
+    })
   }
 }
