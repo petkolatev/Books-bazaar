@@ -17,10 +17,7 @@ export class UserService {
   get isLogged(): boolean {
     return !!this.user
   }
-  get isOwner(): boolean {
-    const owner = true
-    return owner
-  }
+
 
   constructor(private http: HttpClient) {
     this.user$.subscribe((user) => {
@@ -30,8 +27,8 @@ export class UserService {
 
   login(email: string, password: string) {
 
-    return this.http.post<UserForAuth>('/api/login', { email, password })
-    .pipe(tap((user) => this.user$$.next(user)))
+    return this.http.post<any>('/api/login', { email, password })
+      .pipe(tap((user) => this.user$$.next(user)))
 
   }
 
@@ -46,6 +43,10 @@ export class UserService {
   logout() {
     return this.http.get('/api/logout', {})
       .pipe(tap((user) => this.user$$.next(null)))
+  }
+  getProfile() {
+    return this.http.get<UserForAuth>('/api/users/profile')
+      .pipe(tap((user) => this.user$$.next(user)))
   }
 
 }

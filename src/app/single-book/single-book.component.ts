@@ -14,15 +14,14 @@ import { UserService } from '../user/user.service';
 export class SingleBookComponent implements OnInit {
 
   books = {} as Book
+  isowner = true
 
   constructor(private apiService: ApiService, private route: ActivatedRoute, private userService: UserService) { }
 
   get isLoggedIn(): boolean {
     return this.userService.isLogged
   }
-  get isOwner(): boolean {
-    return this.userService.isOwner
-  }
+ 
 
   ngOnInit(): void {
     
@@ -31,8 +30,6 @@ export class SingleBookComponent implements OnInit {
     this.apiService.getOneBook(id).subscribe((book) => {
       this.books = book
       
-      console.log(book);
-
     })
   }
 }

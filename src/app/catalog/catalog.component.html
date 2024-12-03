@@ -4,9 +4,9 @@
         @for (book of books; track $index) {
         <div class="product">
             <a [routerLink]="book._id" class="normal">
-            <h2>{{book.title}}</h2>
+                <h2>{{book.title}}</h2>
             </a>
-            <p>{{book.description}}</p>
+            <p>{{book.description | slice :0:60}}</p>
         </div>
         }
     </div>
