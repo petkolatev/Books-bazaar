@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
 import { Book } from './types/book';
 
@@ -11,13 +10,17 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getBooks() {
-    const { apiUrl } = environment
     return this.http.get<Book[]>(`/api/books`)
   }
 
   getOneBook(id: string) {
-    const { apiUrl } = environment
+
     return this.http.get<Book>(`/api/books/${id}`)
+  }
+  createBook(title: string, author: string, genre: string, year: string, description: string, image: string) {
+    const payload = { title, author, genre, year, description, image }
+
+    return this.http.post<Book>(`/api/books`,payload)
   }
 
 }

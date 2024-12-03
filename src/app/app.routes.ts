@@ -9,6 +9,8 @@ import { SearchComponent } from './search/search.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import { SingleBookComponent } from './single-book/single-book.component';
 import { ErrorMsgComponent } from './core/error-msg/error-msg.component';
+import { CreateComponent } from './create/create.component';
+
 
 export const routes: Routes = [
     { path: 'home', component: WelcomePageComponent },
@@ -20,6 +22,7 @@ export const routes: Routes = [
         ]
     },
     { path: 'search', component: SearchComponent },
+    { path: 'create', component: CreateComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'profile', component: UserProfileComponent },
     { path: 'error', component: ErrorMsgComponent },

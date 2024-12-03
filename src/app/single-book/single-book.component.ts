@@ -12,24 +12,26 @@ import { UserService } from '../user/user.service';
   styleUrl: './single-book.component.css'
 })
 export class SingleBookComponent implements OnInit {
-  
+
   books = {} as Book
 
-  constructor(private apiService: ApiService, private route: ActivatedRoute,private userService:UserService) { }
-  
+  constructor(private apiService: ApiService, private route: ActivatedRoute, private userService: UserService) { }
+
   get isLoggedIn(): boolean {
     return this.userService.isLogged
   }
-  get isOwner():boolean{
+  get isOwner(): boolean {
     return this.userService.isOwner
   }
 
   ngOnInit(): void {
+    
     const id = this.route.snapshot.params['bookId']
-
+    
     this.apiService.getOneBook(id).subscribe((book) => {
-     this.books=book
-     
+      this.books = book
+      
+      console.log(book);
 
     })
   }
