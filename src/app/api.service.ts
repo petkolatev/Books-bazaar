@@ -17,10 +17,10 @@ export class ApiService {
 
     return this.http.get<Book>(`/api/books/${id}`)
   }
-  createBook(title: string, author: string, genre: string, year: string, description: string, image: string) {
-    const payload = { title, author, genre, year, description, image }
+  createBook(title: string, author: string, genre: string, year: string, description: string, image: string, owner: string) {
+    const payload = { title, author, genre, year, description, image, owner }
 
-    return this.http.post<Book>(`/api/books`,payload)
+    return this.http.post<Book>(`/api/books`, payload)
   }
 
 }

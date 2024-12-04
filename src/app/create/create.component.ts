@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { UserService } from '../user/user.service';
-import { LoginComponent } from '../user/login/login.component';
+import { LocalService } from '../local.service';
 
 @Component({
   selector: 'app-create',
@@ -14,17 +14,20 @@ import { LoginComponent } from '../user/login/login.component';
 export class CreateComponent {
 
 
-  constructor(private apiService: ApiService, private userService: UserService) { }
+  constructor(private apiService: ApiService,
+    private userService: UserService,
+    private localService: LocalService
+  ) { }
 
   createBook(form: NgForm) {
     if (form.invalid) {
       return
     }
     const { title, author, genre, year, description, image } = form.value
-    
-      this.apiService.createBook(title, author, genre, year, description, image).subscribe(() => {
+    const owner = this.localService.getData('user')
+    this.apiService.createBook(title, author, genre, year, description, image, owner!).subscribe(() => {
 
-      })
+    })
 
   }
 
