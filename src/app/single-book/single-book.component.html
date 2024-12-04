@@ -5,13 +5,10 @@
     <p><strong>Година:</strong>{{books.year}}</p>
     <p>{{books.description}}.</p>
     @if(isLoggedIn){
-    @if(isowner){
+    @if(isOwner){
     <button class="button">Edin</button>
     <button class="button">Delete</button>
-
     }@else {
-
-
     <button class="button">Like</button>
     <button class="button">Buy</button>
     <button class="button">Rent</button>

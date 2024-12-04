@@ -17,8 +17,7 @@ export class UserService {
   get isLogged(): boolean {
     return !!this.user
   }
-
-
+ 
   constructor(private http: HttpClient) {
     this.user$.subscribe((user) => {
       this.user = user
