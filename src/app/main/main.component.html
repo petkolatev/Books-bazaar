@@ -1,16 +1,5 @@
-@if(isLoggedIn){
+
 <div class="container">
     <app-most-popular />
     <app-catalog />
 </div>
-}@else {
-
-<div class="welcome-msg">
-
-    <h1>Моля влезте в профила си! </h1>
-    <a routerLink="/login">Login</a>
-    Или
-    <a routerLink="/register">Register</a>
-</div>
-
-}

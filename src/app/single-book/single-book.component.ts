@@ -15,6 +15,7 @@ export class SingleBookComponent implements OnInit {
 
   books = {} as Book
   isOwner: boolean = true
+  isLiked: boolean = true
   constructor(private apiService: ApiService, private route: ActivatedRoute, private userService: UserService) { }
 
   get isLoggedIn(): boolean {
@@ -24,14 +25,17 @@ export class SingleBookComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.params['bookId']
+    const user = localStorage.getItem('user')
 
     this.apiService.getOneBook(id).subscribe((book) => {
       this.books = book
-      const user = JSON.stringify(localStorage.getItem('user'))
-      const isOwner = user === JSON.stringify(this.books.owner) ? true : false
+      const isOwner = JSON.stringify(user) === JSON.stringify(this.books.owner) ? true : false
       this.isOwner = isOwner
+      const isLiked = this.books.likes.includes(user!) ? true : false
+      this.isLiked = isLiked
 
     })
+
   }
 
   like() {
@@ -42,6 +46,15 @@ export class SingleBookComponent implements OnInit {
     })
     this.apiService.getOneBook(id).subscribe((book) => {
       this.books = book
+      const isLiked = this.books.likes.includes(user!) ? true : false
+      this.isLiked = isLiked
+    })
+
+  }
+  remove() {
+    const id = this.route.snapshot.params['bookId']
+    this.apiService.remove(id).subscribe(()=>{
+      
     })
   }
 }

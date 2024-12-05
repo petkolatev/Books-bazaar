@@ -23,8 +23,11 @@ export class ApiService {
     return this.http.post<Book>(`/api/books`, payload)
   }
 
-  like(id:string,user: string) {
-    return this.http.put<Book>(`/api/books/${id}`,{id,user})
+  like(id: string, user: string) {
+    return this.http.put<Book>(`/api/books/${id}`, { id, user })
+  }
+  remove(id: string) {
+    return this.http.delete<Book>(`/api/books/${id}`)
   }
 
 }

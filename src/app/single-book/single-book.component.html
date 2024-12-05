@@ -7,9 +7,11 @@
     @if(isLoggedIn){
     @if(isOwner){
     <button class="button">Edin</button>
-    <button class="button">Delete</button>
+    <button (click)="remove()">Delete</button>
     }@else {
+    @if(!isLiked){
     <button (click)="like()">Like</button>
+    }
     <button class="button">Buy</button>
     <button class="button">Rent</button>
     }
