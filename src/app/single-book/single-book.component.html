@@ -9,9 +9,10 @@
     <button class="button">Edin</button>
     <button class="button">Delete</button>
     }@else {
-    <button class="button">Like</button>
+    <button (click)="like()">Like</button>
     <button class="button">Buy</button>
     <button class="button">Rent</button>
     }
-    }
+}
+likes:{{books.likes.length}}
 </div>

@@ -9,5 +9,5 @@ export interface Book {
     description: string;
     image:string
     owner:User
-    likes:string[]
+    likes:User[]
 }
