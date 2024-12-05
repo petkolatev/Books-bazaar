@@ -37,6 +37,11 @@ export class SingleBookComponent implements OnInit {
   like() {
     const user = localStorage.getItem('user')
     const id = this.route.snapshot.params['bookId']
-    this.apiService.like(id, user!).subscribe(()=>{})
+    this.apiService.like(id, user!).subscribe((book) => {
+      this.books = book
+    })
+    this.apiService.getOneBook(id).subscribe((book) => {
+      this.books = book
+    })
   }
 }
