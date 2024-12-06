@@ -17,7 +17,7 @@ export class UserService {
   get isLogged(): boolean {
     return !!this.user
   }
- 
+
   constructor(private http: HttpClient) {
     this.user$.subscribe((user) => {
       this.user = user
@@ -28,7 +28,7 @@ export class UserService {
 
     return this.http.post<any>('/api/login', { email, password })
       .pipe(tap((user) => this.user$$.next(user)))
-      
+
   }
 
   register(username: string, email: string, password: string, rePassword: string) {
@@ -45,9 +45,13 @@ export class UserService {
       .pipe(tap((user) => this.user$$.next(null)))
   }
   getProfile() {
-    return this.http.get<UserForAuth>('/api/users/profile')
+    return this.http.get<UserForAuth>('/api/profile')
       .pipe(tap((user) => this.user$$.next(user)))
   }
+  updateProfile(userid: string, username: string, email: string) {
+    const userData = { username, email }
+    return this.http.put<UserForAuth>(`/api/profile/${userid}`, { ...userData })
+  }
 
- 
+
 }

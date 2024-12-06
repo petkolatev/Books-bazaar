@@ -1,13 +1,18 @@
 <div class="container">
+    <form #form="ngForm" (ngSubmit)="search(form)">
 
-    <div class="search-bar"> <input type="text" id="search-input" onkeyup="searchProducts()"
-            placeholder="Търсене на продукти..."> </div>
-            @if(searchResults.length > 0){
+        <div class="search-bar"> <input type="text" id="search-input" name="searchText" onkeyup="searchProducts()"
+                placeholder="Търсене на продукти..." ngModel #inputSearchText minlength="3"> </div>
+        @if(searchResults.length > 0){
+            @for (item of searchResults; track $index) {
                 <div class="catalog section">
-                    <div class="product"> <img src="product1.jpg" alt="Продукт 1">
-                        <h2>Продукт 1</h2>
-                        <p>Описание на продукт 1</p>
+                    <div class="product"> <img src={{item.image}} alt="Продукт 1">
+                        <h2>{{item.title}}</h2>
+                        <p>{{item.description | slice :0:60}}</p>
                     </div>
                 </div>
             }
+        }
+        <button [disabled]>Търсене</button>
+    </form>
 </div>

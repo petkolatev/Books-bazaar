@@ -60,3 +60,7 @@ h1 {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+button{
+    margin-left: 400px;;
+    padding: 20px;
+}

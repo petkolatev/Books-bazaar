@@ -9,8 +9,8 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  getBooks() {
-    return this.http.get<Book[]>(`/api/book`)
+  getBooks(url?: string) {
+    return this.http.get<Book[]>(`/api/book${url ?? ''}`)
   }
 
   getOneBook(id: string) {

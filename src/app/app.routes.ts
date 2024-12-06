@@ -13,7 +13,8 @@ import { CreateComponent } from './books/create/create.component';
 
 
 export const routes: Routes = [
-    { path: '', component: WelcomePageComponent },
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: 'home', component: WelcomePageComponent },
     { path: 'login', component: LoginComponent },
     {
         path: 'catalog', children: [

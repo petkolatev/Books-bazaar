@@ -1,5 +1,22 @@
-<div class="profile-card"> <img src='https://softuni.bg/users/profile/showavatar/216d8759-ddcf-44ae-b356-204bf487b27c'
-        alt="Профилна снимка">
-    <h2>{{profileDetails.username}}</h2>
-    <p>Имейл: {{profileDetails.email}}</p> <a href="#">Редактиране на профила</a>
+<div class="register-form">
+
+    <form [formGroup]="form" (click)="updateProfile()">
+        <label for="username">Потребителско име</label> <input type="text" id="username" name="username"
+        placeholder="username" formControlName="username">
+        <label for="email">Имейл</label> <input type="email" id="email" name="email" placeholder="email"
+        formControlName="email">
+        <button type="submit">Потвърди</button>
+    </form>
 </div>
+
+@if(books.length > 0){
+<h2>Мои продукти</h2>
+@for (book of books; track $index) {
+<div class="product">
+    <h3>{{book.title}}</h3>
+    <img height="400" style="float:left, margin-bottom:10px" src={{book.image}}>
+
+    <p>{{book.description |slice :0:60}}</p>
+</div>
+}
+}
