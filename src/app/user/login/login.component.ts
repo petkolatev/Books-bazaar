@@ -23,7 +23,8 @@ export class LoginComponent {
     this.loginInProgress = true
     const { email, password } = form.value
   
-    this.userService.login(email, password).subscribe(() => {
+    this.userService.login(email, password).subscribe((data) => {
+      this.userService.user = data.user
       this.loginInProgress = false
       this.router.navigate(['/catalog'])
     })

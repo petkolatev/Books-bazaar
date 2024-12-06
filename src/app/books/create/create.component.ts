@@ -24,7 +24,7 @@ export class CreateComponent {
       return
     }
     const { title, author, genre, year, description, image } = form.value
-    const owner = this.localService.getData('user')
+    const owner = this.userService.user?._id
     this.apiService.createBook(title, author, genre, year, description, image, owner!).subscribe(() => {
 
     })

@@ -1,4 +1,4 @@
-import { User } from "./user";
+import { UserForAuth } from "./user";
 
 export interface Book {
     _id: string,
@@ -8,6 +8,6 @@ export interface Book {
     year: string;
     description: string;
     image:string
-    owner:User
+    owner:UserForAuth
     likes:string[]
 }

@@ -27,9 +27,8 @@ export class UserService {
   login(email: string, password: string) {
 
     return this.http.post<any>('/api/login', { email, password })
-      .pipe(tap((user) => localStorage.setItem('user', user.user._id)))
       .pipe(tap((user) => this.user$$.next(user)))
-
+      
   }
 
   register(username: string, email: string, password: string, rePassword: string) {
@@ -41,7 +40,7 @@ export class UserService {
   }
 
   logout() {
-    localStorage.removeItem('user')
+    localStorage.clear()
     return this.http.get('/api/logout', {})
       .pipe(tap((user) => this.user$$.next(null)))
   }

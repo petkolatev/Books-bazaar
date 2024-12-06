@@ -1,9 +1,10 @@
-<h2>Най-популярни продукти</h2>
+<h2>Най-харесвани продукти</h2>
 @for (book of books; track $index) {
 <div class="product">
-    <h3>{{book.title}}</h3>
-    <img height="400" style="float:left, margin-bottom:10px" src={{book.image}} alt="Тайната градина">
-
-    <p>{{book.description | slice :0:60}}</p>
-</div>
+        <h3>{{book.title}}</h3>
+        <img height="400" style="float:left, margin-bottom:10px"
+        src={{book.image}}>
+        
+        <p>{{book.description | slice :0:60}}</p>
+    </div>
 }

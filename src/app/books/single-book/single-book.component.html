@@ -1,10 +1,10 @@
 <div class="book-container"> 
-    <img src={{books.image}} alt={{books.title}}>
-    <h2>{{books.title}}</h2>
-    <p><strong>Автор:</strong>{{books.author}}</p>
-    <p><strong>Жанр:</strong> {{books.genre}}</p>
-    <p><strong>Година:</strong>{{books.year}}</p>
-    <p>{{books.description}}.</p>
+    <img src={{book.image}} alt={{book.title}}>
+    <h2>{{book.title}}</h2>
+    <p><strong>Автор:</strong>{{book.author}}</p>
+    <p><strong>Жанр:</strong> {{book.genre}}</p>
+    <p><strong>Година:</strong>{{book.year}}</p>
+    <p>{{book.description}}.</p>
     @if(isLoggedIn){
     @if(isOwner){
     <button class="button">Edin</button>
@@ -17,5 +17,5 @@
     <button class="button">Rent</button>
     }
     }
-    <p><span>{{books.likes?.length || 0}}</span> likes</p>
+    <p><span>{{book.likes?.length || 0}}</span> likes</p>
 </div>
