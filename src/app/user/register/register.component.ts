@@ -13,11 +13,11 @@ import { UserService } from '../user.service';
 export class RegisterComponent {
   form = new FormGroup(
     {
-      username: new FormControl('', Validators.required,),
-      email: new FormControl('', Validators.required),
+      username: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      email: new FormControl('', [Validators.required, Validators.email]),
       passGroup: new FormGroup({
-        password: new FormControl('',Validators.required,),
-        rePassword: new FormControl('', Validators.required)
+        password: new FormControl('', [Validators.required, Validators.minLength(5)]),
+        rePassword: new FormControl('', [Validators.required, Validators.minLength(5)])
       })
     }
   );
@@ -32,9 +32,9 @@ export class RegisterComponent {
       return
     }
     const { username, email, passGroup: { password, rePassword } = {} } = this.form.value
-    console.log(this.form.value);
-    this.userService.register(username!, email!, password!, rePassword!).subscribe(()=>{
-      
+    
+    this.userService.register(username!, email!, password!, rePassword!).subscribe(() => {
+
       this.router.navigate(['/catalog'])
     })
 

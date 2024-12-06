@@ -1,16 +1,33 @@
 <div class="login-form">
     <h2>Логин</h2>
     @if(!loginInProgress){
-    <form #form="ngForm" (ngSubmit)="login(form)"> 
+    <form #form="ngForm" (ngSubmit)="login(form)">
         <label for="email">Имейл</label>
-        <input type="email" id="email" name="email" ngModel #inputEmail="ngModel">
+        <input type="email" id="email" name="email" ngModel #inputEmail="ngModel" required>
         <label for="password">Парола</label>
-        <input type="password" id="password" name="password" ngModel #inputPassword="ngModel">
+        <input type="password" id="password" name="password" ngModel #inputPassword="ngModel" required minlength="5">
         <button>Вход</button>
+        @if(inputEmail.errors && form.touched){
+        <p>
+            Email is required!
+        </p>
+        }
+        @if(inputPassword?.errors?.['required'] && form.touched){
+        <p>
+            Password is required!
+        </p>
+        }
+        @if(inputPassword?.errors?.['minlength']){
+        <p>
+            Password must be at least 5 characters!
+        </p>
+        }
     </form>
     } @else {
-        <p>
-            <img height="400" src="https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700" alt="loading...">
-        </p>
+    <p>
+        <img height="400"
+            src="https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700"
+            alt="loading...">
+    </p>
     }
 </div>

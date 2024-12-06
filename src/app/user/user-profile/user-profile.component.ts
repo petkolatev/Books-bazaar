@@ -1,11 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { profileDetails } from '../../types/user';
-import { FormControl, FormGroup, NgForm, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserService } from '../user.service';
 import { Book } from '../../types/book';
 import { ApiService } from '../../api.service';
 import { LoginComponent } from '../login/login.component';
 import { SlicePipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile',
@@ -22,10 +23,10 @@ export class UserProfileComponent implements OnInit {
   }
 
   form = new FormGroup({
-    username: new FormControl(''),
-    email: new FormControl(''),
+    username: new FormControl('',[Validators.required,Validators.minLength(5)]),
+    email: new FormControl('',[Validators.required,Validators.email]),
   })
-  constructor(private userService: UserService, private apiService: ApiService) { }
+  constructor(private userService: UserService, private apiService: ApiService,private router:Router) { }
 
 
   ngOnInit(): void {
@@ -43,8 +44,10 @@ export class UserProfileComponent implements OnInit {
     }
     const userId = this.userService.user?._id
     const { username, email } = this.form.value
-    this.userService.updateProfile(userId!, username!, email!).subscribe(()=>{
-      
+    this.userService.updateProfile(userId!, username!, email!).subscribe((data)=>{
+
+      this.profileDetails = data
+      this.router.navigate(['/home'])
     })
   }
 

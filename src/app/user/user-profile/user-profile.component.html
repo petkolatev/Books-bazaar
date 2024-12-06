@@ -1,11 +1,11 @@
 <div class="register-form">
 
-    <form [formGroup]="form" (click)="updateProfile()">
+    <form [formGroup]="form" >
         <label for="username">Потребителско име</label> <input type="text" id="username" name="username"
         placeholder="username" formControlName="username">
         <label for="email">Имейл</label> <input type="email" id="email" name="email" placeholder="email"
         formControlName="email">
-        <button type="submit">Потвърди</button>
+        <button (click)="updateProfile()">Потвърди</button>
     </form>
 </div>
 

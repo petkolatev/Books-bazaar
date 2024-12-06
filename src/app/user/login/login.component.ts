@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { FormsModule, NgForm } from '@angular/forms';
@@ -16,13 +16,13 @@ export class LoginComponent {
   constructor(private userService: UserService, private router: Router) { }
 
   login(form: NgForm) {
+    
     if (form.invalid) {
-      console.error('Invalid form');
       return
     }
     this.loginInProgress = true
     const { email, password } = form.value
-  
+
     this.userService.login(email, password).subscribe((data) => {
       this.userService.user = data.user
       this.loginInProgress = false
