@@ -1,0 +1,8 @@
+.error-message{
+    text-align: left;
+    border-radius: 0.5em;
+    color: red !important;
+    padding-top: 0;
+    font-weight: bold;
+    margin-left: 30%;
+}

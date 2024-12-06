@@ -1,27 +1,45 @@
 <div class="login-form">
     <h2>Логин</h2>
     @if(!loginInProgress){
-    <form #form="ngForm" (ngSubmit)="login(form)">
+    <form [formGroup]="form" (ngSubmit)="login()">
         <label for="email">Имейл</label>
-        <input type="email" id="email" name="email" ngModel #inputEmail="ngModel" required>
+        <input [class]="isFiledTextMissing('email') || isEmailNotValid ? 'input-error' : ''" type="email" id="email"
+            name="email" formControlName="email" required>
+        @if(form.get('email')?.touched){
+        <div>
+            @if(form.get('email')?.errors?.['required']){
+            <p class="error">
+                Email is required!
+            </p>
+            }
+            @if(form.get('email')?.errors?.['emailValidator']){
+            <p class="error">
+                Email is not valid!
+            </p>
+            }
+        </div>
+        }
         <label for="password">Парола</label>
-        <input type="password" id="password" name="password" ngModel #inputPassword="ngModel" required minlength="5">
+        <input [class]="((form.get('password')?.touched &&
+        (form.get('password')?.errors?.['required'])||
+        (form.get('password')?.touched)&&
+        (form.get('password')?.errors?.['minlength']))
+    )?'input-error': '' " type="password" id="password" name="password" formControlName="password" required>
+       @if(form.get('password')?.touched){
+        <div>
+            @if(form.get('password')?.errors?.['required']){
+            <p class="error">
+                Password is required!
+            </p>
+            }
+            @if(form.get('password')?.errors?.['minlength']){
+            <p class="error">
+                Password must be at least 5 characters!
+            </p>
+            }
+        </div>
+        }
         <button>Вход</button>
-        @if(inputEmail.errors && form.touched){
-        <p>
-            Email is required!
-        </p>
-        }
-        @if(inputPassword?.errors?.['required'] && form.touched){
-        <p>
-            Password is required!
-        </p>
-        }
-        @if(inputPassword?.errors?.['minlength']){
-        <p>
-            Password must be at least 5 characters!
-        </p>
-        }
     </form>
     } @else {
     <p>

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
 import { UserService } from '../user.service';
+import { emailValidator } from '../../utils/email.validator';
+import { matchPassword } from '../../utils/match-passwords.validators';
 
 @Component({
   selector: 'app-register',
@@ -14,15 +16,36 @@ export class RegisterComponent {
   form = new FormGroup(
     {
       username: new FormControl('', [Validators.required, Validators.minLength(5)]),
-      email: new FormControl('', [Validators.required, Validators.email]),
+      email: new FormControl('', [Validators.required,emailValidator()]),
       passGroup: new FormGroup({
         password: new FormControl('', [Validators.required, Validators.minLength(5)]),
-        rePassword: new FormControl('', [Validators.required, Validators.minLength(5)])
-      })
+        rePassword: new FormControl('', [Validators.required])
+      },{
+        validators:[matchPassword('password','rePassword')],
+      }),
     }
   );
   constructor(private userService: UserService, private router: Router) { }
+  isFiledTextMissing(controlName: string) {
+    return (
+      (this.form.get(controlName)?.touched &&
+        (this.form.get(controlName)?.errors?.['required']))
+    )
+  }
 
+
+  get isNotMinLength() {
+    return (
+      (this.form.get('username')?.touched &&
+        (this.form.get('username')?.errors?.['minlength']))
+    )
+  }
+  get isEmailNotValid() {
+    return (
+      (this.form.get('email')?.touched &&
+        (this.form.get('email')?.errors?.['emailValidator']))
+    )
+  }
   get passGroup() {
     return this.form.get('passGroup')
   }

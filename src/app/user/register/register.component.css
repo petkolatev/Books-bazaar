@@ -1,7 +1,7 @@
 .register-form {
     padding: 20px;
     width: 300px;
-    margin-left:41%;
+    margin-left: 41%;
 }
 
 .register-form h2 {
@@ -36,4 +36,17 @@
 .register-form button:hover {
     background-color: #ddd;
     color: black;
+}
+
+p.error {
+    text-align: left;
+    border-radius: 0.5em;
+    color: red !important;
+    padding-top: 0;
+    font-weight: bold;
+}
+
+.input-error {
+    border-left-color: red !important;
+    border-color: red !important;
 }
