@@ -13,7 +13,7 @@ import { CreateComponent } from './books/create/create.component';
 
 
 export const routes: Routes = [
-    { path: 'home', component: WelcomePageComponent },
+    { path: '', component: WelcomePageComponent },
     { path: 'login', component: LoginComponent },
     {
         path: 'catalog', children: [

@@ -8,6 +8,6 @@ export interface Book {
     year: string;
     description: string;
     image:string
-    owner:UserForAuth
+    owner:string
     likes:string[]
 }

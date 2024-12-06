@@ -26,7 +26,7 @@ export class SingleBookComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.params['bookId']
-    const user = localStorage.getItem('user')
+    const user = this.userService.user?._id
     this.apiService.getOneBook(id).subscribe((book) => {
       this.book = book
       const isOwner = JSON.stringify(user) === JSON.stringify(this.book.owner) ? true : false
