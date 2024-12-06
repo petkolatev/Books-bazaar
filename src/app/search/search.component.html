@@ -2,10 +2,12 @@
 
     <div class="search-bar"> <input type="text" id="search-input" onkeyup="searchProducts()"
             placeholder="Търсене на продукти..."> </div>
-    <div class="catalog section">
-        <div class="product"> <img src="product1.jpg" alt="Продукт 1">
-            <h2>Продукт 1</h2>
-            <p>Описание на продукт 1</p>
-        </div>
-    </div>
+            @if(searchResults.length > 0){
+                <div class="catalog section">
+                    <div class="product"> <img src="product1.jpg" alt="Продукт 1">
+                        <h2>Продукт 1</h2>
+                        <p>Описание на продукт 1</p>
+                    </div>
+                </div>
+            }
 </div>

@@ -1,6 +1,8 @@
-.footer{
-    background: grey;
-    align-items: center;
-    justify-items: center;
-    margin-top: 50px;
-}
+.footer {
+    background-color: #f1f1f1;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }

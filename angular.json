@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "test-demo": {
+    "books-bazar": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/test-demo",
+            "outputPath": "dist/books-bazar",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -59,10 +59,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "test-demo:build:production"
+              "buildTarget": "books-bazar:build:production"
             },
             "development": {
-              "buildTarget": "test-demo:build:development"
+              "buildTarget": "books-bazar:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -92,5 +92,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "fe926b6f-2bd1-40d9-a31d-56be83974f15"
   }
 }

@@ -1,9 +1,16 @@
 <div class="login-form">
     <h2>Логин</h2>
-    <form #form="ngForm" (ngSubmit)="login(form)"> <label for="email">Имейл</label>
+    @if(!loginInProgress){
+    <form #form="ngForm" (ngSubmit)="login(form)"> 
+        <label for="email">Имейл</label>
         <input type="email" id="email" name="email" ngModel #inputEmail="ngModel">
         <label for="password">Парола</label>
         <input type="password" id="password" name="password" ngModel #inputPassword="ngModel">
         <button>Вход</button>
     </form>
+    } @else {
+        <p>
+            <img height="400" src="https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700" alt="loading...">
+        </p>
+    }
 </div>

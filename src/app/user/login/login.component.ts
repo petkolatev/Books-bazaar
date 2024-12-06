@@ -11,6 +11,8 @@ import { FormsModule, NgForm } from '@angular/forms';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  loginInProgress = false
+
   constructor(private userService: UserService, private router: Router) { }
 
   login(form: NgForm) {
@@ -18,10 +20,11 @@ export class LoginComponent {
       console.error('Invalid form');
       return
     }
+    this.loginInProgress = true
     const { email, password } = form.value
   
     this.userService.login(email, password).subscribe(() => {
-
+      this.loginInProgress = false
       this.router.navigate(['/catalog'])
     })
   };

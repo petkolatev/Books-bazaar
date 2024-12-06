@@ -8,8 +8,6 @@ import { catchError } from 'rxjs';
 const { apiUrl } = environment
 
 export const appInterceptor: HttpInterceptorFn = (req, next) => {
-
-
     const API = '/api';
     if (req.url.startsWith(API)) {
         req = req.clone({
@@ -20,7 +18,6 @@ export const appInterceptor: HttpInterceptorFn = (req, next) => {
     const errMsgService = inject(ErrorMsgService)
     const router = inject(Router)
 
-    console.log(req);
     return next(req)
         .pipe(catchError((err) => {
             if (err.status === 401) {

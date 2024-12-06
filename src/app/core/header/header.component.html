@@ -1,14 +1,19 @@
-<nav>
-    <a routerLink="/home">Home</a>
-    <a routerLink="/catalog">Catalog</a>
-    <a routerLink="/search">Search</a>
-    @if(isLoggedIn){
-    <a routerLink="/create">Create</a>
-    <a (click)="logout()">Logout</a>
-    <a routerLink="/profile">Profile</a>
-
-    }@else {
-    <a routerLink="/login">Login</a>
-    <a routerLink="/register">Register</a>
-    }
-</nav>
+<div class="header">
+    <h1>БАЗАР ЗА КНИГИ</h1>
+    <p>Купуване и наемане на книги!</p>
+</div>
+<div class="topnav">
+    <nav>
+        <a routerLink="/home">Начало</a>
+        <a routerLink="/catalog">Каталог с книги</a>
+        <a routerLink="/search">Търсене</a>
+        @if(isLoggedIn){
+            <a routerLink="/create">Добави</a>
+            <a (click)="logout()">Излез</a>
+            <a routerLink="/profile">Профил</a>
+        }@else {
+        <a routerLink="/login">Вход</a>
+        <a routerLink="/register">Регистрация</a>
+        }
+    </nav>
+</div>
