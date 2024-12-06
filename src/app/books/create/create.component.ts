@@ -1,8 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ApiService } from '../api.service';
+import { ApiService } from '../../api.service';
 import { FormsModule, NgForm } from '@angular/forms';
-import { UserService } from '../user/user.service';
-import { LocalService } from '../local.service';
+import { UserService } from '../../user/user.service';
+import { LocalService } from '../../local.service';
 
 @Component({
   selector: 'app-create',

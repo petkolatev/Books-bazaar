@@ -6,10 +6,10 @@ import { MainComponent } from './main/main.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { SearchComponent } from './search/search.component';
-import { CatalogComponent } from './catalog/catalog.component';
-import { SingleBookComponent } from './single-book/single-book.component';
+import { CatalogComponent } from './books/catalog/catalog.component';
+import { SingleBookComponent } from './books/single-book/single-book.component';
 import { ErrorMsgComponent } from './core/error-msg/error-msg.component';
-import { CreateComponent } from './create/create.component';
+import { CreateComponent } from './books/create/create.component';
 
 
 export const routes: Routes = [

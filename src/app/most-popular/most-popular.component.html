@@ -1,8 +1,9 @@
 <h2>Най-популярни продукти</h2>
+@for (book of books; track $index) {
 <div class="product">
-    <h3>Тайната градина</h3>
-    <img height="400" style="float:left, margin-bottom:10px"
-        src="https://i4.helikon.bg/products/2281/22/222281/222281_b.jpg?t=1733409896" alt="Тайната градина">
+    <h3>{{book.title}}</h3>
+    <img height="400" style="float:left, margin-bottom:10px" src={{book.image}} alt="Тайната градина">
 
-    <p>Историята на едно момиче, което открива магическа градина и променя живота си и живота на други.</p>
+    <p>{{book.description | slice :0:60}}</p>
 </div>
+}

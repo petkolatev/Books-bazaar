@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Book } from '../types/book';
-import { ApiService } from '../api.service';
+import { Book } from '../../types/book';
+import { ApiService } from '../../api.service';
 import { ActivatedRoute } from '@angular/router';
-import { UserService } from '../user/user.service';
+import { UserService } from '../../user/user.service';
 
 @Component({
   selector: 'app-single-book',
@@ -52,8 +52,8 @@ export class SingleBookComponent implements OnInit {
   }
   remove() {
     const id = this.route.snapshot.params['bookId']
-    this.apiService.remove(id).subscribe(()=>{
-      
+    this.apiService.remove(id).subscribe(() => {
+
     })
   }
 }
