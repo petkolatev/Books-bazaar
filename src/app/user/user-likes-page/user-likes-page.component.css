@@ -1,0 +1,16 @@
+.catalog {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.product {
+    border-bottom: 1px solid #ccc;
+    padding-left: 10px;
+    height: 20%;
+    justify-content: center;
+}
+
+.product a {
+    text-decoration: none;
+}

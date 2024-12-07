@@ -1,0 +1,19 @@
+<h2>Харесани Продукти</h2>
+@if(books.length > 0){
+    <div class="catalog section">
+        @for (book of books; track $index) {
+        <div class="product">
+            <a [routerLink]="book._id" class="normal">
+                <h3>{{book.title}}</h3>
+            </a>
+            <img height="400" style="float:left, margin-bottom: 10px" src={{book.image}}
+        alt={{book.title}}>
+            <p>{{book.description | slice :0:60}}...</p>
+        </div>
+        }
+    </div>
+} @else {
+    <p>
+        <img height="400" src="https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700" alt="loading...">
+    </p>
+}

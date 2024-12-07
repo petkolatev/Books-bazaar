@@ -10,12 +10,13 @@ import { SingleBookComponent } from './books/single-book/single-book.component'
 import { ErrorMsgComponent } from './core/error-msg/error-msg.component'
 import { CreateComponent } from './books/create/create.component'
 import { AuthGuard, Guest } from './guards/auth.guard'
+import { UserLikesPageComponent } from './user/user-likes-page/user-likes-page.component'
 
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: WelcomePageComponent },
-    { path: 'login', component: LoginComponent,canActivate:[Guest] },
+    { path: 'login', component: LoginComponent, canActivate: [Guest] },
     {
         path: 'catalog', children: [
             { path: '', component: MainComponent },
@@ -29,11 +30,17 @@ export const routes: Routes = [
         ]
     },
     { path: 'create', component: CreateComponent, canActivate: [AuthGuard] },
-    { path: 'register', component: RegisterComponent ,canActivate:[Guest]},
+    { path: 'register', component: RegisterComponent, canActivate: [Guest] },
+    {
+        path: 'liked', children: [
+            { path: '', component: UserLikesPageComponent, canActivate: [AuthGuard] },
+            { path: ':bookId', redirectTo: '/catalog/:bookId' }
+        ]
+    },
     {
         path: 'profile', children: [
             { path: '', component: UserProfileComponent, canActivate: [AuthGuard] },
-            { path: ':bookId', redirectTo:'/catalog/:bookId' }
+            { path: ':bookId', redirectTo: '/catalog/:bookId' }
         ]
     },
     { path: 'error', component: ErrorMsgComponent },
