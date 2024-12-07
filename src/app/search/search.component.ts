@@ -3,11 +3,12 @@ import { Book } from '../types/book';
 import { ApiService } from '../api.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { SlicePipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [FormsModule,SlicePipe],
+  imports: [FormsModule,SlicePipe,RouterLink],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css'
 })

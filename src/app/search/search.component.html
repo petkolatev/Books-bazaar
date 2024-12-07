@@ -4,14 +4,16 @@
         <div class="search-bar"> <input type="text" id="search-input" name="searchText" onkeyup="searchProducts()"
                 placeholder="Търсене на продукти..." ngModel #inputSearchText minlength="3"> </div>
         @if(searchResults.length > 0){
-            @for (item of searchResults; track $index) {
-                <div class="catalog section">
-                    <div class="product"> <img src={{item.image}} alt="Продукт 1">
-                        <h2>{{item.title}}</h2>
-                        <p>{{item.description | slice :0:60}}</p>
-                    </div>
-                </div>
-            }
+        @for (item of searchResults; track $index) {
+        <div class="catalog section">
+            <div class="product"> <img src={{item.image}} alt="Продукт 1">
+                <a [routerLink]="item._id" class="normal">
+                    <h3>{{item.title}}</h3>
+                </a>
+                <p>{{item.description | slice :0:60}}</p>
+            </div>
+        </div>
+        }
         }
         <button [disabled]>Търсене</button>
     </form>

@@ -6,10 +6,10 @@ import { MainComponent } from './main/main.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { SearchComponent } from './search/search.component';
-import { CatalogComponent } from './books/catalog/catalog.component';
 import { SingleBookComponent } from './books/single-book/single-book.component';
 import { ErrorMsgComponent } from './core/error-msg/error-msg.component';
 import { CreateComponent } from './books/create/create.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 export const routes: Routes = [
@@ -22,10 +22,15 @@ export const routes: Routes = [
             { path: ':bookId', component: SingleBookComponent }
         ]
     },
-    { path: 'search', component: SearchComponent },
-    { path: 'create', component: CreateComponent },
+    {
+        path: 'search', children: [
+            { path: '', component: SearchComponent },
+            { path: ':bookId', redirectTo:'/catalog/:bookId'}
+        ]
+    },
+    { path: 'create', component: CreateComponent, canActivate: [AuthGuard] },
     { path: 'register', component: RegisterComponent },
-    { path: 'profile', component: UserProfileComponent },
+    { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard] },
     { path: 'error', component: ErrorMsgComponent },
     { path: '404', component: PageNotFoundcomponent },
     { path: '**', redirectTo: '/404' }
