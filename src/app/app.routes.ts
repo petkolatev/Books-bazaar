@@ -9,13 +9,13 @@ import { SearchComponent } from './search/search.component'
 import { SingleBookComponent } from './books/single-book/single-book.component'
 import { ErrorMsgComponent } from './core/error-msg/error-msg.component'
 import { CreateComponent } from './books/create/create.component'
-import { AuthGuard } from './guards/auth.guard'
+import { AuthGuard, Guest } from './guards/auth.guard'
 
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: WelcomePageComponent },
-    { path: 'login', component: LoginComponent },
+    { path: 'login', component: LoginComponent,canActivate:[Guest] },
     {
         path: 'catalog', children: [
             { path: '', component: MainComponent },
@@ -29,7 +29,7 @@ export const routes: Routes = [
         ]
     },
     { path: 'create', component: CreateComponent, canActivate: [AuthGuard] },
-    { path: 'register', component: RegisterComponent },
+    { path: 'register', component: RegisterComponent ,canActivate:[Guest]},
     {
         path: 'profile', children: [
             { path: '', component: UserProfileComponent, canActivate: [AuthGuard] },

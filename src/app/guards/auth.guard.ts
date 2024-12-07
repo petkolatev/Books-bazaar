@@ -12,3 +12,13 @@ export const AuthGuard: CanActivateChildFn = () => {
     router.navigate(['/login'])
     return false
 }
+
+export const Guest: CanActivateChildFn = () => {
+    const userService = inject(UserService)
+    const router = inject(Router)
+    if (!userService.isLogged) {
+        return true
+    }
+    router.navigate(['/404'])
+    return false
+}
