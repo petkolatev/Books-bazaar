@@ -1,27 +1,48 @@
-<div class="book-container"> 
-    @if(book){
-        <img src={{book.image}} alt={{book.title}}>
-        <h2>{{book.title}}</h2>
-        <p><strong>Автор:</strong>{{book.author}}</p>
-        <p><strong>Жанр:</strong> {{book.genre}}</p>
-        <p><strong>Година:</strong>{{book.year}}</p>
-        <p>{{book.description}}.</p>
-        @if(isLoggedIn){
-            @if(isOwner){
-                <button (click)="remove()">Изтрий</button>
-            }@else {
-                @if(!isLiked){
-                    <button (click)="like()">Харесай</button>
-                }
-                <button class="button">Добави В Кошницата</button>
-            }
-        }
-        <p>
-            <span>{{(book.likes && book.likes.length) || 0}}</span> likes
-        </p>
-    } @else {
-        <p>
-            <img height="400"  style="margin-left:25%" src="https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700" alt="loading...">
-        </p>
+<div class="book-container">
+    @if(book && !isInEditMode){
+    <img src={{book.image}} alt={{book.title}}>
+    <h2>{{book.title}}</h2>
+    <p><strong>Автор:</strong>{{book.author}}</p>
+    <p><strong>Жанр:</strong> {{book.genre}}</p>
+    <p><strong>Година:</strong>{{book.year}}</p>
+    <p>{{book.description}}.</p>
+    @if(isLoggedIn){
+    @if(isOwner){
+    <button (click)="toggleEditBook()">Редактирай</button>
+    <button (click)="remove()">Изтрий</button>
+    }@else {
+    @if(!isLiked){
+    <button (click)="like()">Харесай</button>
+    }
+    <button class="button">Добави В Кошницата</button>
+    }
+    }
+    <p>
+        <span>{{(book.likes && book.likes.length) || 0}}</span> likes
+    </p>
+    }@else if(isInEditMode){
+    <div class="form-container">
+        <h2>Редактирай книга</h2>
+        <form [formGroup]="form">
+            <label for="chitle">Заглавие</label>
+            <input type="text" id="title" name="title" formControlName="title">
+            <label for="author">Автор</label>
+            <input type="text" id="author" name="author" formControlName="author">
+            <label for="genre">Жанр</label> <input type="text" id="genre" name="genre" formControlName="genre">
+            <label for="year">Година</label> <input type="number" id="year" name="year" formControlName="year">
+            <label for="description">Описание</label> <textarea id="description" name="description" rows="4"
+                formControlName="description"></textarea>
+            <label for="image">URL на изображението</label> <input type="text" id="image" name="image"
+                formControlName="image">
+            <button (click)="saveBook()">Запази</button>
+        </form>
+    </div>
+    }
+    @else {
+    <p>
+        <img height="400" style="margin-left:25%"
+            src="https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700"
+            alt="loading...">
+    </p>
     }
 </div>

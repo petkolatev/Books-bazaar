@@ -11,3 +11,12 @@ export interface Book {
     owner:string
     likes:string[]
 }
+
+export interface EditBook{
+    title: string,
+    author: string,
+    genre: string,
+    year: string,
+    description: string,
+    image: string,
+}

@@ -22,14 +22,20 @@ export const routes: Routes = [
             { path: ':bookId', component: SingleBookComponent }
         ]
     },
-    { 
-        path: 'search', children: [ 
+    {
+        path: 'search', children: [
             { path: '', component: SearchComponent },
             { path: ':bookId', redirectTo: "/catalog/:bookId" }
-        ]},
+        ]
+    },
     { path: 'create', component: CreateComponent, canActivate: [AuthGuard] },
     { path: 'register', component: RegisterComponent },
-    { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuard] },
+    {
+        path: 'profile', children: [
+            { path: '', component: UserProfileComponent, canActivate: [AuthGuard] },
+            { path: ':bookId', redirectTo:'/catalog/:bookId' }
+        ]
+    },
     { path: 'error', component: ErrorMsgComponent },
     { path: '404', component: PageNotFoundComponent },
     { path: '**', redirectTo: '/404' }

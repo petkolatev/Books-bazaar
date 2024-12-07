@@ -31,6 +31,7 @@ export class UserService {
   login(email: string, password: string) {
 
     return this.http.post<any>('/api/login', { email, password })
+      .pipe(tap((user) => localStorage.setItem('user', JSON.stringify(user.user))))
       .pipe(tap((user) => this.user$$.next(user)))
 
   }
@@ -57,5 +58,10 @@ export class UserService {
   updateProfile(userid: string, username: string, email: string) {
     const userData = { username, email }
     return this.http.put<UserForAuth>(`/api/profile/${userid}`, { ...userData })
+  }
+  loadLocalUserIfAny() {
+    const localUserRaw = localStorage.getItem('user')
+    if (localUserRaw)
+      this.user = JSON.parse(localUserRaw)
   }
 }

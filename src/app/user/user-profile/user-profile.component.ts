@@ -5,12 +5,12 @@ import { UserService } from '../user.service'
 import { Book } from '../../types/book'
 import { ApiService } from '../../api.service'
 import { SlicePipe } from '@angular/common'
-import { Router } from '@angular/router'
+import { Router, RouterLink } from '@angular/router'
 
 @Component({
   selector: 'app-user-profile',
   standalone: true,
-  imports: [ReactiveFormsModule, SlicePipe],
+  imports: [ReactiveFormsModule, SlicePipe,RouterLink],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.css'
 })
@@ -18,6 +18,7 @@ export class UserProfileComponent implements OnInit {
   books: Book[] = []
   isLoadingBooks = false
   isLoadingProfile = false
+  
   profileDetails: profileDetails = {
     username: '',
     email: '',

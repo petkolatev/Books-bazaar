@@ -2,9 +2,9 @@ import { Component, inject, input } from '@angular/core';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
-import { EmailDirective } from '../../directives/email.directive';
 import { emailValidator } from '../../utils/email.validator';
 import { ErrorMsgService } from '../../core/error-msg/error-msg.service';
+import { LocalService } from '../../local.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +18,7 @@ export class LoginComponent {
   loginInProgress = false
   error = inject(ErrorMsgService)
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private localService: LocalService) { }
   form = new FormGroup(
     {
       email: new FormControl('', [Validators.required, emailValidator()]),
@@ -51,13 +51,14 @@ export class LoginComponent {
       return
     }
     this.loginInProgress = true
-    const { email,password } =this.form.value
+    const { email, password } = this.form.value
 
     this.userService.login(email!, password!).subscribe((data) => {
       this.userService.user = data.user
+      localStorage.setItem('user', JSON.stringify(data.user))
       this.loginInProgress = false
       this.router.navigate(['/catalog'])
     })
   }
-  
+
 }
