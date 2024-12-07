@@ -18,6 +18,10 @@ export class UserService {
     return !!this.user
   }
 
+  get username(): string | undefined {
+    return this.user?.username
+  }
+
   constructor(private http: HttpClient) {
     this.user$.subscribe((user) => {
       this.user = user
@@ -44,14 +48,14 @@ export class UserService {
     return this.http.get('/api/logout', {})
       .pipe(tap((user) => this.user$$.next(null)))
   }
+
   getProfile() {
     return this.http.get<UserForAuth>('/api/profile')
       .pipe(tap((user) => this.user$$.next(user)))
   }
+
   updateProfile(userid: string, username: string, email: string) {
     const userData = { username, email }
     return this.http.put<UserForAuth>(`/api/profile/${userid}`, { ...userData })
   }
-
-
 }

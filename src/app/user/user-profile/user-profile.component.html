@@ -1,22 +1,37 @@
-<div class="register-form">
+<div class="row">
+    <div class="column side">
+        <h2>Редактиране на профила</h2>
+        <div class="register-form">
+            @if(!isLoadingProfile){
+                <form [formGroup]="form" >
+                    <label for="username">Потребителско име</label> <input type="text" id="username" name="username"
+                    placeholder="username" formControlName="username">
+                    <label for="email">Имейл</label> <input type="email" id="email" name="email" placeholder="email"
+                    formControlName="email">
+                    <button (click)="updateProfile()">Потвърди</button>
+                </form>
+            } @else {
+                <img height="400" src="https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700" alt="loading...">
+            }
+        </div>
+    </div>
 
-    <form [formGroup]="form" >
-        <label for="username">Потребителско име</label> <input type="text" id="username" name="username"
-        placeholder="username" formControlName="username">
-        <label for="email">Имейл</label> <input type="email" id="email" name="email" placeholder="email"
-        formControlName="email">
-        <button (click)="updateProfile()">Потвърди</button>
-    </form>
+    <div class="column wide">
+        @if(!isLoadingBooks){
+            @if(books.length > 0){
+                <h2>Мои продукти</h2>
+                @for (book of books; track $index) {
+                    <div class="product">
+                        <h3>{{book.title}}</h3>
+                        <img height="400" style="float:left, margin-bottom:10px" src={{book.image}}>
+                        <p>{{book.description |slice :0:60}}</p>
+                    </div>
+                }
+            }
+        } @else {
+            <p>
+                <img height="400" src="https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700" alt="loading...">
+            </p>
+        }
+    </div>
 </div>
-
-@if(books.length > 0){
-<h2>Мои продукти</h2>
-@for (book of books; track $index) {
-<div class="product">
-    <h3>{{book.title}}</h3>
-    <img height="400" style="float:left, margin-bottom:10px" src={{book.image}}>
-
-    <p>{{book.description |slice :0:60}}</p>
-</div>
-}
-}

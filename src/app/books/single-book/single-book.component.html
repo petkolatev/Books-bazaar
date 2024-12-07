@@ -1,21 +1,27 @@
 <div class="book-container"> 
-    <img src={{book.image}} alt={{book.title}}>
-    <h2>{{book.title}}</h2>
-    <p><strong>Автор:</strong>{{book.author}}</p>
-    <p><strong>Жанр:</strong> {{book.genre}}</p>
-    <p><strong>Година:</strong>{{book.year}}</p>
-    <p>{{book.description}}.</p>
-    @if(isLoggedIn){
-    @if(isOwner){
-    <button class="button">Edin</button>
-    <button (click)="remove()">Delete</button>
-    }@else {
-    @if(!isLiked){
-    <button (click)="like()">Like</button>
+    @if(book){
+        <img src={{book.image}} alt={{book.title}}>
+        <h2>{{book.title}}</h2>
+        <p><strong>Автор:</strong>{{book.author}}</p>
+        <p><strong>Жанр:</strong> {{book.genre}}</p>
+        <p><strong>Година:</strong>{{book.year}}</p>
+        <p>{{book.description}}.</p>
+        @if(isLoggedIn){
+            @if(isOwner){
+                <button (click)="remove()">Изтрий</button>
+            }@else {
+                @if(!isLiked){
+                    <button (click)="like()">Харесай</button>
+                }
+                <button class="button">Добави В Кошницата</button>
+            }
+        }
+        <p>
+            <span>{{(book.likes && book.likes.length) || 0}}</span> likes
+        </p>
+    } @else {
+        <p>
+            <img height="400"  style="margin-left:25%" src="https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700" alt="loading...">
+        </p>
     }
-    <button class="button">Buy</button>
-    <button class="button">Rent</button>
-    }
-    }
-    <p><span>{{book.likes?.length || 0}}</span> likes</p>
 </div>

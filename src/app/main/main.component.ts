@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { UserService } from '../user/user.service';
-import { MostPopularComponent } from '../most-popular/most-popular.component';
-import { CatalogComponent } from '../books/catalog/catalog.component';
-import { RouterLink } from '@angular/router';
+import { Component } from '@angular/core'
+import { UserService } from '../user/user.service'
+import { MostPopularComponent } from '../most-popular/most-popular.component'
+import { CatalogComponent } from '../books/catalog/catalog.component'
+import { RouterLink } from '@angular/router'
 
 @Component({
   selector: 'app-main',
@@ -13,8 +13,8 @@ import { RouterLink } from '@angular/router';
 })
 export class MainComponent {
   get isLoggedIn(): boolean {
-
     return this.userService.isLogged
   }
+
   constructor(private userService: UserService) { }
 }

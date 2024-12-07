@@ -1,20 +1,30 @@
 <div class="container">
     <form #form="ngForm" (ngSubmit)="search(form)">
-
-        <div class="search-bar"> <input type="text" id="search-input" name="searchText" onkeyup="searchProducts()"
-                placeholder="Търсене на продукти..." ngModel #inputSearchText minlength="3"> </div>
-        @if(searchResults.length > 0){
-        @for (item of searchResults; track $index) {
-        <div class="catalog section">
-            <div class="product"> <img src={{item.image}} alt="Продукт 1">
-                <a [routerLink]="item._id" class="normal">
-                    <h3>{{item.title}}</h3>
-                </a>
-                <p>{{item.description | slice :0:60}}</p>
-            </div>
+        <div class="search-bar"> 
+            <input type="text" id="search-input" name="searchText"
+                placeholder="Търсене на продукти..." ngModel #inputSearchText minlength="3"> 
         </div>
-        }
-        }
         <button [disabled]>Търсене</button>
+        @if(!isLoading){
+            @if (searchResults && searchResults.length == 0) {
+                <p>Няма намерени резултати.</p>
+            } @else if(searchResults && searchResults.length > 0){
+                @for (item of searchResults; track $index) {
+                    <div class="catalog section">
+                        <div class="product"> 
+                            <img src={{item.image}} alt={{item.title}}>
+                            <a [routerLink]="item._id" class="normal">
+                                <h3>{{item.title}}</h3>
+                            </a>
+                            <p>{{item.description | slice :0:60}}</p>
+                        </div>
+                    </div>
+                }
+            }
+            } @else {
+                <p>
+                    <img height="400"  style="margin-left:25%" src="https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700" alt="loading...">
+                </p>
+            }
     </form>
 </div>

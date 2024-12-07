@@ -1,8 +1,7 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { ApiService } from '../../api.service';
-import { FormsModule, NgForm } from '@angular/forms';
-import { UserService } from '../../user/user.service';
-import { LocalService } from '../../local.service';
+import { Component } from '@angular/core'
+import { ApiService } from '../../api.service'
+import { FormsModule, NgForm } from '@angular/forms'
+import { UserService } from '../../user/user.service'
 
 @Component({
   selector: 'app-create',
@@ -12,12 +11,7 @@ import { LocalService } from '../../local.service';
   styleUrl: './create.component.css'
 })
 export class CreateComponent {
-
-
-  constructor(private apiService: ApiService,
-    private userService: UserService,
-    private localService: LocalService
-  ) { }
+  constructor(private apiService: ApiService, private userService: UserService,) {}
 
   createBook(form: NgForm) {
     if (form.invalid) {
@@ -28,9 +22,5 @@ export class CreateComponent {
     this.apiService.createBook(title, author, genre, year, description, image, owner!).subscribe(() => {
 
     })
-
   }
-
-
-
 }

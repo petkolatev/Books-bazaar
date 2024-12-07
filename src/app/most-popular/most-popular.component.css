@@ -1,3 +1,7 @@
+.most-popular {
+    border-right: 1px solid #ccc;
+}
+
 .product {
     padding-top: 3px;
     padding-left: 10px;

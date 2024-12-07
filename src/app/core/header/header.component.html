@@ -9,11 +9,11 @@
         <a routerLink="/search">Търсене</a>
         @if(isLoggedIn){
             <a routerLink="/create">Добави</a>
-            <a (click)="logout()">Излез</a>
-            <a routerLink="/profile">Профил</a>
+            <a class="profile-menu-item" (click)="logout()">Излез</a>
+            <a class="profile-menu-item" routerLink="/profile">{{username}}</a>
         }@else {
-        <a routerLink="/login">Вход</a>
-        <a routerLink="/register">Регистрация</a>
+            <a routerLink="/login">Вход</a>
+            <a routerLink="/register">Регистрация</a>
         }
     </nav>
 </div>

@@ -13,6 +13,9 @@ export class HeaderComponent {
   get isLoggedIn(): boolean {
     return this.userService.isLogged
   }
+  get username(): string | undefined {
+    return this.userService.username
+  }
   constructor(private userService: UserService, private router: Router) { }
 
   logout() {

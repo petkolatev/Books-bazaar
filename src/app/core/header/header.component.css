@@ -27,3 +27,7 @@
     background-color: #ddd;
     color: black;
   }
+
+.profile-menu-item {
+  float: right !important;
+}
