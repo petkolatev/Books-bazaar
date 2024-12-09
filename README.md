@@ -20,8 +20,9 @@ Book Bazaar is an Angular application where users can create books and like it
 
 ### Installation
  1. Clone the repository(CLI): ```bash git clone https://github.com/petkolatev/Books-bazaar.git
- 2. Clone the repository(API): ```bash git clone https://github.com/petkolatev/Bazaar-Api.git
+ 2. Clone the repository(Rest-Api): ```bash git clone https://github.com/petkolatev/Bazaar-Api.git
  3. npm install -  on both for dependencies
+ 4. create .nvm file(for Rest-Api) there have example
 
 ### Dependencies
 1. Running MongoDB local instance

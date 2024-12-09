@@ -10,8 +10,8 @@
         @if(isLoggedIn){
             <a routerLink="/create">Добави</a>
             <a class="profile-menu-item" (click)="logout()">Излез</a>
-            <a class="profile-menu-item" routerLink="/liked">Харесани</a>
             <a class="profile-menu-item" routerLink="/profile">{{username}}</a>
+            <a class="topnav" routerLink="/liked">Харесани</a>
         }@else {
             <a routerLink="/login">Вход</a>
             <a routerLink="/register">Регистрация</a>
