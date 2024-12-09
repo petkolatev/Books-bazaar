@@ -7,7 +7,7 @@ import { RouterLink } from '@angular/router'
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [MostPopularComponent, CatalogComponent, RouterLink],
+  imports: [MostPopularComponent, CatalogComponent,],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })

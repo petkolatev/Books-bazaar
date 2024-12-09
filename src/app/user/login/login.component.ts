@@ -1,10 +1,10 @@
-import { Component, inject, input } from '@angular/core';
-import { UserService } from '../user.service';
-import { Router } from '@angular/router';
-import { FormControl, FormGroup, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
-import { emailValidator } from '../../utils/email.validator';
-import { ErrorMsgService } from '../../core/error-msg/error-msg.service';
-import { LocalService } from '../../local.service';
+import { Component, inject, input } from '@angular/core'
+import { UserService } from '../user.service'
+import { Router } from '@angular/router'
+import { FormControl, FormGroup, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms'
+import { emailValidator } from '../../utils/email.validator'
+import { ErrorMsgService } from '../../core/error-msg/error-msg.service'
+import { LocalService } from '../../local.service'
 
 @Component({
   selector: 'app-login',

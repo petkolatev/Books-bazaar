@@ -1,4 +1,3 @@
-import { UserForAuth } from "./user";
 
 export interface Book {
     _id: string,

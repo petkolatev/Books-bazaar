@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../api.service';
-import { SlicePipe } from '@angular/common';
-import { Book } from '../types/book';
+import { Component, OnInit } from '@angular/core'
+import { ApiService } from '../api.service'
+import { SlicePipe } from '@angular/common'
+import { Book } from '../types/book'
 
 @Component({
   selector: 'app-most-popular',

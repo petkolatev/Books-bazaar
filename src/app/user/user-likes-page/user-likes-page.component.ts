@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Book } from '../../types/book';
-import { ApiService } from '../../api.service';
-import { UserService } from '../user.service';
-import { RouterLink } from '@angular/router';
-import { SlicePipe } from '@angular/common';
+import { Component, OnInit } from '@angular/core'
+import { Book } from '../../types/book'
+import { ApiService } from '../../api.service'
+import { UserService } from '../user.service'
+import { RouterLink } from '@angular/router'
+import { SlicePipe } from '@angular/common'
 
 @Component({
   selector: 'app-user-likes-page',
@@ -15,7 +15,6 @@ import { SlicePipe } from '@angular/common';
 export class UserLikesPageComponent implements OnInit {
 
   books: Book[] = []
-  isLoadingBooks:boolean = true
 
   constructor(private apiService:ApiService,private userService:UserService){}
   ngOnInit(): void {
@@ -24,6 +23,6 @@ export class UserLikesPageComponent implements OnInit {
       books = books.filter((books) => books.likes.includes(this.userService.user!._id))
       this.books = books
     })
-    this.isLoadingBooks = false
+
   }
 }

@@ -19,6 +19,6 @@ export const Guest: CanActivateChildFn = () => {
     if (!userService.isLogged) {
         return true
     }
-    router.navigate(['/404'])
+    router.navigate(['/home'])
     return false
 }
