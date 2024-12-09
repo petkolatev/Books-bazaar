@@ -4,7 +4,6 @@ import { Router } from '@angular/router'
 import { FormControl, FormGroup, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms'
 import { emailValidator } from '../../utils/email.validator'
 import { ErrorMsgService } from '../../core/error-msg/error-msg.service'
-import { LocalService } from '../../local.service'
 
 @Component({
   selector: 'app-login',
@@ -18,7 +17,7 @@ export class LoginComponent {
   loginInProgress = false
   error = inject(ErrorMsgService)
 
-  constructor(private userService: UserService, private router: Router, private localService: LocalService) { }
+  constructor(private userService: UserService, private router: Router) { }
   form = new FormGroup(
     {
       email: new FormControl('', [Validators.required, emailValidator()]),
