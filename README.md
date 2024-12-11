@@ -8,7 +8,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 ## Overview 
 
-Book Bazaar is an Angular application where users can create books and like it
+In this application you can browse the catalog of books and the most popular ones as a guest, create and like as a logged in user. Also, when you add a book it will be visible in your profile, and the ones you liked will be visible in the liked menu
 
 ## Features - 
 
